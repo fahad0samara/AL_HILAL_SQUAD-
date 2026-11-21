@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cairo", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --color-hilal-deep: #091244;
+  --color-hilal-navy: #102070;
+  --color-hilal-royal: #1B4BFF;
+  --color-hilal-glow: #2E64FF;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #0B144E;
+    color: #ffffff;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Authentic deep royal sapphire backdrop matching the visual reference */
+.hilal-stage-bg {
+  background-color: #0D195E;
+  background-image:
+    radial-gradient(ellipse 68% 60% at 50% 48%, rgba(36, 72, 224, 0.72) 0%, rgba(19, 36, 128, 0.88) 50%, rgba(10, 18, 72, 0.99) 100%),
+    radial-gradient(circle at 14% 12%, rgba(44, 92, 255, 0.22) 0%, transparent 42%),
+    radial-gradient(circle at 86% 88%, rgba(22, 54, 194, 0.28) 0%, transparent 46%);
+}
+
+/* Fine stadium halftone mesh overlay matching the reference background */
+.hilal-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Smooth SVG-based heraldic crest clip-path (defined globally in App.tsx) */
+.hilal-crest-mask {
+  clip-path: url(#hilal-shield-smooth);
+}
+
+/* Soft edge feathering so studio portraits blend seamlessly into the royal shield */
+.hilal-portrait-blend {
+  mask-image: radial-gradient(ellipse 92% 94% at 50% 42%, #000 68%, rgba(0, 0, 0, 0.82) 84%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 92% 94% at 50% 42%, #000 68%, rgba(0, 0, 0, 0.82) 84%, transparent 100%);
+}
+
+/* Hide native scrollbars on mobile horizontal filter strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

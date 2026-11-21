@@ -1,0 +1,6 @@
+{
+  "name": "نادي الهلال السعودي | الفريق الأول",
+  "description": "منصة عرض تشكيلة نادي الهلال السعودي الأول لكرة القدم، الإحصائيات، المباريات، جدول الترتيب، التذاكر والمتجر الرسمي بواجهة عربية متكاملة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
