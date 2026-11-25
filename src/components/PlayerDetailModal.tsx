@@ -37,6 +37,7 @@ export function PlayerDetailModal({
           />
 
           <motion.div
+            key={player.id}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
@@ -78,21 +79,28 @@ export function PlayerDetailModal({
               </div>
 
               <div className="text-center sm:text-right flex-1">
-                <p className="text-xs font-semibold text-blue-200/85">
-                  {player.positionLabel} · التقييم الفني {player.marketRating}
-                </p>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <span className="text-xs font-bold text-blue-200">
+                    {player.positionLabel}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-[11px] font-extrabold text-amber-200 tabular-nums">
+                    التقييم {player.marketRating} · {player.shortRole}
+                  </span>
+                </div>
                 <h2
                   id="player-detail-title"
-                  className="font-display font-black text-3xl sm:text-4xl text-white mt-1 leading-tight"
+                  className="font-display font-black text-3xl sm:text-4xl text-white mt-1.5 leading-tight"
                 >
                   {player.fullName}
                 </h2>
-                <div className="mt-2.5 flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 text-xs text-white/75">
+                <div className="mt-2.5 flex flex-wrap items-center justify-center sm:justify-start gap-x-2.5 gap-y-1 text-xs text-white/80">
                   <span>{player.nationality}</span>
                   <span aria-hidden="true">·</span>
                   <span className="tabular-nums">{player.age} عاماً</span>
                   <span aria-hidden="true">·</span>
                   <span className="tabular-nums">{player.height}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>القدم {player.preferredFoot}</span>
                   <span aria-hidden="true">·</span>
                   <span className="tabular-nums">انضم {player.joinedYear}</span>
                 </div>
@@ -131,65 +139,117 @@ export function PlayerDetailModal({
             <div className="p-5 sm:p-7 space-y-6">
               <p className="text-sm sm:text-[15px] leading-7 text-white/85">{player.bio}</p>
 
-              {/* Season KPI Grid */}
+              {/* Position-Aware Season KPI Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <StatBox
                   label={player.category === 'management' ? 'المباريات' : 'المشاركات'}
                   value={String(player.stats.appearances)}
+                  accent="text-white"
                 />
-                <StatBox
-                  label={
-                    player.stats.cleanSheets !== undefined
-                      ? 'شباك نظيفة'
-                      : player.category === 'management'
-                        ? 'الأهداف المسجلة'
-                        : 'الأهداف'
-                  }
-                  value={String(
-                    player.stats.cleanSheets !== undefined
-                      ? player.stats.cleanSheets
-                      : player.stats.goals
-                  )}
-                />
-                <StatBox
-                  label={player.category === 'management' ? 'الانتصارات' : 'التمريرات الحاسمة'}
-                  value={String(player.stats.assists)}
-                />
+                {player.stats.cleanSheets !== undefined ? (
+                  <>
+                    <StatBox
+                      label="شباك نظيفة"
+                      value={String(player.stats.cleanSheets)}
+                      accent="text-amber-300"
+                    />
+                    <StatBox
+                      label="دقة التوزيع"
+                      value={`${player.stats.passAccuracy}%`}
+                      accent="text-sky-300"
+                    />
+                  </>
+                ) : player.positionKey === 'defenders' ? (
+                  <>
+                    <StatBox
+                      label="دقة التمرير"
+                      value={`${player.stats.passAccuracy}%`}
+                      accent="text-sky-300"
+                    />
+                    <StatBox
+                      label="أهداف / صناعة"
+                      value={`${player.stats.goals} / ${player.stats.assists}`}
+                      accent="text-amber-300"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <StatBox
+                      label={player.category === 'management' ? 'الأهداف المسجلة' : 'الأهداف'}
+                      value={String(player.stats.goals)}
+                      accent="text-amber-300"
+                    />
+                    <StatBox
+                      label={player.category === 'management' ? 'الانتصارات' : 'التمريرات الحاسمة'}
+                      value={String(player.stats.assists)}
+                      accent="text-sky-300"
+                    />
+                  </>
+                )}
                 <StatBox
                   label="تقييم الموسم"
                   value={player.stats.rating}
+                  accent="text-blue-200"
                 />
               </div>
 
-              {/* SVG Hexagonal Radar + Numeric Attributes */}
+              {/* Calibrated SVG Hexagonal Radar + Tiered Numeric Attributes */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center rounded-2xl bg-white/[0.04] border border-white/[0.08] p-4 sm:p-5">
-                <RadarChart primary={player.attributes} size={220} />
+                <RadarChart primary={player.attributes} size={235} />
 
                 <div className="space-y-3">
-                  <h3 className="font-display font-bold text-sm text-white">
-                    التحليل الفني التفصيلي
-                  </h3>
-                  {player.attributes.map((attr) => (
-                    <div key={attr.label}>
-                      <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                        <span className="text-white/85">{attr.label}</span>
-                        <span className="tabular-nums text-blue-300">{attr.value}</span>
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-display font-bold text-sm text-white">
+                      التحليل الفني التفصيلي
+                    </h3>
+                    <span className="text-[11px] font-semibold text-white/55 tabular-nums">
+                      دقة التمرير {player.stats.passAccuracy}%
+                    </span>
+                  </div>
+                  {player.attributes.map((attr) => {
+                    const isElite = attr.value >= 90;
+                    const isStrong = attr.value >= 82 && attr.value < 90;
+                    return (
+                      <div key={attr.label}>
+                        <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                          <span className="text-white/90">{attr.label}</span>
+                          <span
+                            className={`tabular-nums font-extrabold ${
+                              isElite
+                                ? 'text-amber-300'
+                                : isStrong
+                                  ? 'text-blue-300'
+                                  : 'text-sky-200/80'
+                            }`}
+                          >
+                            {attr.value}
+                          </span>
+                        </div>
+                        <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                          <motion.div
+                            key={`${player.id}-${attr.label}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${attr.value}%` }}
+                            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                            className={`h-full rounded-full ${
+                              isElite
+                                ? 'bg-gradient-to-l from-amber-300 to-amber-500'
+                                : isStrong
+                                  ? 'bg-gradient-to-l from-[#60A5FA] to-[#1B4BFF]'
+                                  : 'bg-gradient-to-l from-sky-300/80 to-blue-500/75'
+                            }`}
+                          />
+                        </div>
                       </div>
-                      <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-l from-[#3E78FF] to-[#1B4BFF]"
-                          style={{ width: `${attr.value}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Honors */}
               <div>
                 <h3 className="font-display font-bold text-sm text-white/75 mb-2.5 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-blue-300" />
+                  <Award className="w-4 h-4 text-amber-300" />
                   <span>أبرز البطولات والإنجازات</span>
                 </h3>
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-[13px] text-white/85">
@@ -213,10 +273,18 @@ export function PlayerDetailModal({
   );
 }
 
-function StatBox({ label, value }: { label: string; value: string }) {
+function StatBox({
+  label,
+  value,
+  accent = 'text-white',
+}: {
+  label: string;
+  value: string;
+  accent?: string;
+}) {
   return (
     <div className="rounded-2xl bg-white/[0.06] border border-white/[0.08] p-3.5 text-center">
-      <div className="font-display font-black text-2xl sm:text-3xl text-white tabular-nums">
+      <div className={`font-display font-black text-2xl sm:text-3xl tabular-nums ${accent}`}>
         {value}
       </div>
       <div className="text-[11px] font-medium text-white/65 mt-1">{label}</div>

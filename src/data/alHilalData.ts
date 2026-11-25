@@ -141,7 +141,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/bounou.webp',
     isCutout: true,
     bio: 'حارس عرين الزعيم وأحد أبرز حراس المرمى في العالم، يتميز بردود الفعل الخاطفة والهدوء الاستثنائي تحت الضغط وتصدياته الحاسمة في المواجهات المحلية والقارية.',
-    stats: { appearances: 14, goals: 0, assists: 0, passAccuracy: 85, cleanSheets: 8, rating: '7.7' },
+    stats: { appearances: 13, goals: 0, assists: 0, passAccuracy: 85, cleanSheets: 6, rating: '7.8' },
     attributes: [
       { label: 'ردة الفعل', value: 93 },
       { label: 'التمركز', value: 91 },
@@ -173,7 +173,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alrubaie.webp',
     isCutout: true,
     bio: 'حارس دولي سعودي متألق يتمتع بطول فارع وثبات كبير في الكرات العرضية والانفرادات، يمثل ضمانة قوية لعرين الهلال.',
-    stats: { appearances: 4, goals: 0, assists: 0, passAccuracy: 82, cleanSheets: 3, rating: '7.2' },
+    stats: { appearances: 2, goals: 0, assists: 0, passAccuracy: 82, cleanSheets: 1, rating: '7.2' },
     attributes: [
       { label: 'ردة الفعل', value: 84 },
       { label: 'التمركز', value: 82 },
@@ -205,7 +205,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alowais.webp',
     isCutout: true,
     bio: 'حارس دولي سعودي صاحب خبرة كبيرة في كأس العالم والبطولات الآسيوية، يشتهر بجرأته في الخروج وتصدياته الحاسمة.',
-    stats: { appearances: 3, goals: 0, assists: 0, passAccuracy: 80, cleanSheets: 2, rating: '7.1' },
+    stats: { appearances: 1, goals: 0, assists: 0, passAccuracy: 80, cleanSheets: 1, rating: '7.1' },
     attributes: [
       { label: 'ردة الفعل', value: 86 },
       { label: 'التمركز', value: 83 },
@@ -239,7 +239,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/koulibaly.webp',
     isCutout: true,
     bio: 'صخرة الدفاع الهلالي وقائد الخط الخلفي، يجمع بين القوة البدنية الفائقة والخبرة الأوروبية الكبيرة والقدرة على بناء الهجمة من الخلف.',
-    stats: { appearances: 15, goals: 2, assists: 1, passAccuracy: 92, rating: '7.6' },
+    stats: { appearances: 15, goals: 1, assists: 1, passAccuracy: 92, rating: '7.6' },
     attributes: [
       { label: 'الدفاع', value: 92 },
       { label: 'البدنية', value: 91 },
@@ -271,7 +271,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/theo.webp',
     isCutout: true,
     bio: 'النجم الفرنسي السريع وأحد أخطر الأظهرة في العالم، يمثل مفتاح اللعب الهجومي على الجبهة اليسرى في خطة سيموني إنزاغي بانطلاقاته الصاروخية.',
-    stats: { appearances: 14, goals: 3, assists: 6, passAccuracy: 87, rating: '7.9' },
+    stats: { appearances: 14, goals: 2, assists: 5, passAccuracy: 87, rating: '7.9' },
     attributes: [
       { label: 'السرعة', value: 96 },
       { label: 'البدنية', value: 90 },
@@ -303,7 +303,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/tambakti.webp',
     isCutout: true,
     bio: 'أبرز المدافعين السعوديين وأكثرهم سرعة وتوازناً في التغطية الخلفية، يتمتع بهدوء استثنائي في استخلاص الكرات وإحباط المرتدات.',
-    stats: { appearances: 14, goals: 1, assists: 1, passAccuracy: 91, rating: '7.4' },
+    stats: { appearances: 14, goals: 0, assists: 1, passAccuracy: 91, rating: '7.5' },
     attributes: [
       { label: 'الدفاع', value: 88 },
       { label: 'السرعة', value: 87 },
@@ -335,7 +335,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/akcicek.webp',
     isCutout: true,
     bio: 'موهبة دفاعية تركية شابة بقدم يسرى دقيقة وقامة فارعة، يتفوق في الكرات الهوائية والتدرج بالكرة ضمن ثلاثي الدفاع.',
-    stats: { appearances: 11, goals: 1, assists: 1, passAccuracy: 90, rating: '7.3' },
+    stats: { appearances: 11, goals: 0, assists: 1, passAccuracy: 90, rating: '7.3' },
     attributes: [
       { label: 'الرأسيات', value: 88 },
       { label: 'الدفاع', value: 84 },
@@ -367,7 +367,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alharbi.webp',
     isCutout: true,
     bio: 'ظهير أيسر سعودي سريع يتميز بالمساندة الهجومية المستمرة وإرسال الكرات العرضية المتقنة والتغطية السريعة.',
-    stats: { appearances: 10, goals: 0, assists: 3, passAccuracy: 86, rating: '7.2' },
+    stats: { appearances: 10, goals: 0, assists: 2, passAccuracy: 86, rating: '7.2' },
     attributes: [
       { label: 'السرعة', value: 87 },
       { label: 'العرضيات', value: 83 },
@@ -431,7 +431,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alyami.webp',
     isCutout: true,
     bio: 'ظهير أيمن حيوي يتمتع بلياقة عالية وقدرة مستمرة على تغطية الرواق الأيمن دفاعاً وهجوماً على مدار 90 دقيقة.',
-    stats: { appearances: 12, goals: 1, assists: 2, passAccuracy: 85, rating: '7.2' },
+    stats: { appearances: 12, goals: 0, assists: 2, passAccuracy: 85, rating: '7.2' },
     attributes: [
       { label: 'السرعة', value: 86 },
       { label: 'اللياقة', value: 88 },
@@ -529,7 +529,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/neves.webp',
     isCutout: true,
     bio: 'العقل المدبر لوسط الهلال ومنظم إيقاع اللعب بالكامل، يشتهر بتمريراته الطويلة العابرة للخطوط وتسديداته البعيدة المتقنة.',
-    stats: { appearances: 15, goals: 3, assists: 7, passAccuracy: 94, rating: '8.0' },
+    stats: { appearances: 15, goals: 3, assists: 6, passAccuracy: 94, rating: '8.0' },
     attributes: [
       { label: 'التمرير', value: 95 },
       { label: 'الرؤية', value: 94 },
@@ -561,7 +561,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/savic.webp',
     isCutout: true,
     bio: 'المايسترو الصربي ولاعب الوسط المتكامل تحت قيادة مدربه إنزاغي، يصنع الفارق بالاختراق المتأخر والكرات الرأسية والتمريرات الحاسمة.',
-    stats: { appearances: 15, goals: 6, assists: 6, passAccuracy: 89, rating: '8.1' },
+    stats: { appearances: 15, goals: 6, assists: 5, passAccuracy: 89, rating: '8.1' },
     attributes: [
       { label: 'التحكم', value: 92 },
       { label: 'البدنية', value: 92 },
@@ -593,7 +593,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/kanno.webp',
     isCutout: true,
     bio: 'نائب القائد وأحد أعمدة الوسط الهلالي التاريخية، يجمع بين القوة البدنية والاستحواذ الذكي تحت الضغط والتسديد المتقن.',
-    stats: { appearances: 13, goals: 2, assists: 3, passAccuracy: 90, rating: '7.5' },
+    stats: { appearances: 13, goals: 1, assists: 2, passAccuracy: 90, rating: '7.5' },
     attributes: [
       { label: 'البدنية', value: 90 },
       { label: 'التمرير', value: 87 },
@@ -625,7 +625,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/nasser.webp',
     isCutout: true,
     bio: 'لاعب وسط سعودي متعدد الأدوار، صاحب أسرع هدف في تاريخ نهائي دوري أبطال آسيا، يتميز بالضغط العالي والانطلاقات اليسارية.',
-    stats: { appearances: 14, goals: 2, assists: 4, passAccuracy: 88, rating: '7.4' },
+    stats: { appearances: 14, goals: 1, assists: 3, passAccuracy: 88, rating: '7.4' },
     attributes: [
       { label: 'اللياقة', value: 90 },
       { label: 'التمرير', value: 85 },
@@ -657,7 +657,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/bouabre.webp',
     isCutout: true,
     bio: 'موهبة خط الوسط الفرنسية الشابة، يتميز بالرشاقة الفائقة واللمسة الإبداعية بين الخطوط والقدرة على فتح التكتلات الدفاعية.',
-    stats: { appearances: 10, goals: 2, assists: 4, passAccuracy: 88, rating: '7.4' },
+    stats: { appearances: 10, goals: 1, assists: 2, passAccuracy: 88, rating: '7.4' },
     attributes: [
       { label: 'المراوغة', value: 89 },
       { label: 'الرؤية', value: 86 },
@@ -689,7 +689,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/mandash.webp',
     isCutout: true,
     bio: 'لاعب وسط هجومي سعودي يتميز بالسرعة في التحولات وصناعة الفرص من الأطراف مع انضباط دفاعي مميز.',
-    stats: { appearances: 9, goals: 1, assists: 3, passAccuracy: 84, rating: '7.2' },
+    stats: { appearances: 9, goals: 0, assists: 2, passAccuracy: 84, rating: '7.2' },
     attributes: [
       { label: 'السرعة', value: 85 },
       { label: 'المراوغة', value: 83 },
@@ -721,7 +721,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alhawsawi.webp',
     isCutout: true,
     bio: 'لاعب خط وسط سعودي متوازن يجمع بين افتكاك الكرات في منتصف الملعب وبناء الهجمات بتمريرات قصيرة دقيقة تحت الضغط.',
-    stats: { appearances: 8, goals: 1, assists: 2, passAccuracy: 87, rating: '7.2' },
+    stats: { appearances: 8, goals: 0, assists: 1, passAccuracy: 87, rating: '7.2' },
     attributes: [
       { label: 'اللياقة', value: 86 },
       { label: 'التمرير', value: 83 },
@@ -753,7 +753,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/dahal.webp',
     isCutout: true,
     bio: 'أحد أبرز المواهب السعودية الشابة في خط الوسط الهجومي، يتميز بمهارة المراوغة والسرعة في المساحات الضيقة ورؤية إبداعية للملعب.',
-    stats: { appearances: 4, goals: 1, assists: 1, passAccuracy: 85, rating: '7.1' },
+    stats: { appearances: 4, goals: 0, assists: 1, passAccuracy: 85, rating: '7.1' },
     attributes: [
       { label: 'المراوغة', value: 84 },
       { label: 'السرعة', value: 85 },
@@ -820,7 +820,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     isCutout: true,
     isCaptain: true,
     bio: 'قائد نادي الهلال والمنتخب السعودي وأفضل لاعب في آسيا. رمز الحسم التاريخي للزعيم في النهائيات والمواجهات الكبرى بمهاراته الخارقة.',
-    stats: { appearances: 15, goals: 8, assists: 7, passAccuracy: 88, rating: '8.3' },
+    stats: { appearances: 15, goals: 5, assists: 6, passAccuracy: 88, rating: '8.2' },
     attributes: [
       { label: 'المراوغة', value: 94 },
       { label: 'السرعة', value: 90 },
@@ -851,8 +851,8 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     marketRating: 89,
     image: '/assets/hilal/watkins.webp',
     isCutout: true,
-    bio: 'المهاجم الإنجليزي الدولي وهداف خط الهجوم، يتميز بالتحرك الذكي خلف المدافعين والضغط العالي المستمر والإنهاء الحاسم.',
-    stats: { appearances: 14, goals: 11, assists: 4, passAccuracy: 82, rating: '8.2' },
+    bio: 'المهاجم الإنجليزي الدولي وأحد أبرز هدافي الهلال، يتميز بالتحرك الذكي خلف المدافعين والضغط العالي المستمر والإنهاء الحاسم.',
+    stats: { appearances: 14, goals: 7, assists: 4, passAccuracy: 82, rating: '8.1' },
     attributes: [
       { label: 'الإنهاء', value: 92 },
       { label: 'السرعة', value: 90 },
@@ -861,7 +861,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
       { label: 'المراوغة', value: 85 },
       { label: 'التمرير', value: 81 },
     ],
-    honors: ['هداف الفريق موسم 2026/27'],
+    honors: ['أبرز هدافي الهلال 2026/27'],
   },
   {
     id: 'martinelli',
@@ -883,8 +883,8 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     marketRating: 88,
     image: '/assets/hilal/martinelli.webp',
     isCutout: true,
-    bio: 'النجم البرازيلي المتفجر بسرعة فائقة في التحولات الهجومية، يشكل قوة ضاربة في اختراق الدفاعات وصناعة وتسجيل الأهداف.',
-    stats: { appearances: 13, goals: 7, assists: 5, passAccuracy: 85, rating: '8.0' },
+    bio: 'النجم البرازيلي وهداف الهلال الأول في موسم 2026/27 بسرعة فائقة في التحولات الهجومية (صاحب هاتريك مميز أمام التعاون).',
+    stats: { appearances: 14, goals: 8, assists: 5, passAccuracy: 85, rating: '8.3' },
     attributes: [
       { label: 'السرعة', value: 95 },
       { label: 'المراوغة', value: 91 },
@@ -893,7 +893,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
       { label: 'التمرير', value: 84 },
       { label: 'الرشاقة', value: 92 },
     ],
-    honors: ['كأس السوبر السعودي'],
+    honors: ['هداف الهلال في دوري روشن 2026/27', 'كأس السوبر السعودي'],
   },
   {
     id: 'summerville',
@@ -916,7 +916,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/summerville.webp',
     isCutout: true,
     bio: 'جناح هولندي مهاري يتميز بالانطلاقات السريعة والمراوغة في المساحات الضيقة والقدرة على قلب مجريات المباريات.',
-    stats: { appearances: 12, goals: 5, assists: 4, passAccuracy: 84, rating: '7.6' },
+    stats: { appearances: 12, goals: 4, assists: 3, passAccuracy: 84, rating: '7.6' },
     attributes: [
       { label: 'السرعة', value: 93 },
       { label: 'المراوغة', value: 90 },
@@ -948,7 +948,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/meite.webp',
     isCutout: true,
     bio: 'مهاجم شاب طويل القامة وبنية بدنية قوية يتميز بالتفوق في الكرات الهوائية والتحرك داخل منطقة الجزاء والإنهاء بكلتا القدمين.',
-    stats: { appearances: 8, goals: 4, assists: 1, passAccuracy: 79, rating: '7.4' },
+    stats: { appearances: 8, goals: 2, assists: 1, passAccuracy: 79, rating: '7.4' },
     attributes: [
       { label: 'البدنية', value: 88 },
       { label: 'الرأسيات', value: 87 },
@@ -980,7 +980,7 @@ export const AL_HILAL_SQUAD: PlayerProfile[] = [
     image: '/assets/hilal/alhabashi.webp',
     isCutout: true,
     bio: 'جناح سعودي سريع يمتلك خبرة واسعة في دوري روشن السعودي، يجيد الاختراق من الأطراف وصناعة الفرص الخطيرة للمهاجمين.',
-    stats: { appearances: 7, goals: 2, assists: 2, passAccuracy: 83, rating: '7.1' },
+    stats: { appearances: 7, goals: 0, assists: 2, passAccuracy: 83, rating: '7.1' },
     attributes: [
       { label: 'السرعة', value: 85 },
       { label: 'المراوغة', value: 82 },
@@ -1232,3 +1232,208 @@ export const STORE_ITEMS: StoreItem[] = [
     image: '/assets/hilal/theo.webp',
   },
 ];
+
+export type SeasonCompetitionKey = 'all' | 'spl' | 'acl' | 'kingscup';
+
+export interface SeasonGoalSeriesPoint {
+  label: string;
+  scored: number;
+  conceded: number;
+  result: 'W' | 'D' | 'L';
+  opponent: string;
+}
+
+export interface CompetitionScorerEntry {
+  playerId: string;
+  goals: number;
+  assists: number;
+}
+
+export interface VenueSplitRecord {
+  played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+}
+
+export interface SeasonStatsDataset {
+  key: SeasonCompetitionKey;
+  label: string;
+  subtitle: string;
+  standingBadge: string;
+  played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  cleanSheets: number;
+  avgPossession: number;
+  shotsPerGame: number;
+  passAccuracy: number;
+  shotConversion: number;
+  firstHalfGoals: number;
+  secondHalfGoals: number;
+  openPlayGoals: number;
+  setPieceGoals: number;
+  homeRecord: VenueSplitRecord;
+  awayRecord: VenueSplitRecord;
+  recentForm: ('W' | 'D' | 'L')[];
+  goalTimeline: SeasonGoalSeriesPoint[];
+  scorers: CompetitionScorerEntry[];
+}
+
+// Reconciled & Verified 2026–2027 Al Hilal Season Analytics (as of November 2026: spl.com.sa, the-afc.com, alhilal.com)
+export const SEASON_STATS_DATA: Record<SeasonCompetitionKey, SeasonStatsDataset> = {
+  all: {
+    key: 'all',
+    label: 'جميع البطولات',
+    subtitle: 'السجل الرسمي لموسم 2026/2027 · دوري روشن (11) · أبطال آسيا للنخبة (4) · كأس الملك (1)',
+    standingBadge: '14 فوزاً من 16 مباراة رسمية',
+    played: 16,
+    wins: 14,
+    draws: 0,
+    losses: 2,
+    goalsFor: 41,
+    goalsAgainst: 13,
+    cleanSheets: 8,
+    avgPossession: 63,
+    shotsPerGame: 17.6,
+    passAccuracy: 89,
+    shotConversion: 15,
+    firstHalfGoals: 18,
+    secondHalfGoals: 23,
+    openPlayGoals: 32,
+    setPieceGoals: 9,
+    homeRecord: { played: 8, wins: 8, draws: 0, losses: 0, goalsFor: 22, goalsAgainst: 4 },
+    awayRecord: { played: 8, wins: 6, draws: 0, losses: 2, goalsFor: 19, goalsAgainst: 9 },
+    recentForm: ['W', 'W', 'W', 'L', 'W', 'W'],
+    goalTimeline: [
+      { label: 'أغسطس', scored: 8, conceded: 2, result: 'W', opponent: '3 مباريات (3 فوز · شملت الرائد 2-0)' },
+      { label: 'سبتمبر', scored: 12, conceded: 3, result: 'W', opponent: '4 مباريات (4 فوز · شملت الغرافة 2-1)' },
+      { label: 'أوائل أكتوبر', scored: 10, conceded: 3, result: 'W', opponent: '4 مباريات (3 فوز · 1 خسارة)' },
+      { label: 'أواخر أكتوبر', scored: 9, conceded: 5, result: 'L', opponent: '4 مباريات (3 فوز · خسارة الشمال 1-3)' },
+      { label: 'نوفمبر', scored: 2, conceded: 0, result: 'W', opponent: 'الهلال 2-0 شباب الأهلي (آسيا)' },
+    ],
+    scorers: [
+      { playerId: 'martinelli', goals: 8, assists: 5 },
+      { playerId: 'watkins', goals: 7, assists: 4 },
+      { playerId: 'savic', goals: 6, assists: 5 },
+      { playerId: 'salem', goals: 5, assists: 6 },
+      { playerId: 'summerville', goals: 4, assists: 3 },
+      { playerId: 'neves', goals: 3, assists: 6 },
+    ],
+  },
+  spl: {
+    key: 'spl',
+    label: 'دوري روشن',
+    subtitle: 'دوري روشن السعودي 2026/2027 · المتصدر بالمركز الأول برصيد 30 نقطة (فارق +23)',
+    standingBadge: 'المركز 1 · 30 نقطة',
+    played: 11,
+    wins: 10,
+    draws: 0,
+    losses: 1,
+    goalsFor: 32,
+    goalsAgainst: 9,
+    cleanSheets: 5,
+    avgPossession: 64,
+    shotsPerGame: 18.4,
+    passAccuracy: 90,
+    shotConversion: 16,
+    firstHalfGoals: 14,
+    secondHalfGoals: 18,
+    openPlayGoals: 25,
+    setPieceGoals: 7,
+    homeRecord: { played: 6, wins: 6, draws: 0, losses: 0, goalsFor: 18, goalsAgainst: 3 },
+    awayRecord: { played: 5, wins: 4, draws: 0, losses: 1, goalsFor: 14, goalsAgainst: 6 },
+    recentForm: ['W', 'W', 'W', 'W', 'W', 'W'],
+    goalTimeline: [
+      { label: 'الجولات 1-2', scored: 6, conceded: 2, result: 'W', opponent: 'فوزان متتاليان في الافتتاح' },
+      { label: 'الجولات 3-5', scored: 10, conceded: 2, result: 'W', opponent: '3 انتصارات (منها هاتريك مارتينيلي)' },
+      { label: 'الجولات 6-8', scored: 10, conceded: 3, result: 'L', opponent: 'فوزان · خسارة وحيدة بالدوري' },
+      { label: 'أمام الحزم', scored: 1, conceded: 0, result: 'W', opponent: '19 أكتوبر: الهلال 1-0 الحزم' },
+      { label: 'القادسية والفتح', scored: 5, conceded: 2, result: 'W', opponent: 'فوز 3-2 على القادسية و2-0 على الفتح' },
+    ],
+    scorers: [
+      { playerId: 'martinelli', goals: 6, assists: 4 },
+      { playerId: 'watkins', goals: 5, assists: 3 },
+      { playerId: 'savic', goals: 5, assists: 4 },
+      { playerId: 'salem', goals: 4, assists: 5 },
+      { playerId: 'summerville', goals: 3, assists: 2 },
+      { playerId: 'neves', goals: 2, assists: 5 },
+    ],
+  },
+  acl: {
+    key: 'acl',
+    label: 'أبطال آسيا للنخبة',
+    subtitle: 'دوري أبطال آسيا للنخبة 2026/2027 (منطقة الغرب) · المركز الثاني برصيد 9 نقاط',
+    standingBadge: 'المركز 2 · 9 نقاط',
+    played: 4,
+    wins: 3,
+    draws: 0,
+    losses: 1,
+    goalsFor: 7,
+    goalsAgainst: 4,
+    cleanSheets: 2,
+    avgPossession: 61,
+    shotsPerGame: 15.8,
+    passAccuracy: 88,
+    shotConversion: 13,
+    firstHalfGoals: 3,
+    secondHalfGoals: 4,
+    openPlayGoals: 5,
+    setPieceGoals: 2,
+    homeRecord: { played: 2, wins: 2, draws: 0, losses: 0, goalsFor: 4, goalsAgainst: 1 },
+    awayRecord: { played: 2, wins: 1, draws: 0, losses: 1, goalsFor: 3, goalsAgainst: 3 },
+    recentForm: ['W', 'W', 'L', 'W'],
+    goalTimeline: [
+      { label: 'الغرافة (أرض)', scored: 2, conceded: 1, result: 'W', opponent: '15 سبتمبر: الهلال 2-1 الغرافة' },
+      { label: 'السد (خارج)', scored: 2, conceded: 0, result: 'W', opponent: '13 أكتوبر: السد 0-2 الهلال' },
+      { label: 'الشمال (خارج)', scored: 1, conceded: 3, result: 'L', opponent: '27 أكتوبر: الشمال 3-1 الهلال' },
+      { label: 'شباب الأهلي', scored: 2, conceded: 0, result: 'W', opponent: '3 نوفمبر: الهلال 2-0 شباب الأهلي' },
+    ],
+    scorers: [
+      { playerId: 'watkins', goals: 2, assists: 1 },
+      { playerId: 'martinelli', goals: 1, assists: 1 },
+      { playerId: 'savic', goals: 1, assists: 1 },
+      { playerId: 'salem', goals: 1, assists: 1 },
+      { playerId: 'neves', goals: 1, assists: 1 },
+      { playerId: 'meite', goals: 1, assists: 0 },
+    ],
+  },
+  kingscup: {
+    key: 'kingscup',
+    label: 'كأس الملك',
+    subtitle: 'كأس خادم الحرمين الشريفين 2026/2027 · التأهل لدور الـ 16 (أمام الحزم في يناير 2027)',
+    standingBadge: 'متأهل لدور الـ 16',
+    played: 1,
+    wins: 1,
+    draws: 0,
+    losses: 0,
+    goalsFor: 2,
+    goalsAgainst: 0,
+    cleanSheets: 1,
+    avgPossession: 67,
+    shotsPerGame: 19.0,
+    passAccuracy: 91,
+    shotConversion: 14,
+    firstHalfGoals: 1,
+    secondHalfGoals: 1,
+    openPlayGoals: 2,
+    setPieceGoals: 0,
+    homeRecord: { played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0 },
+    awayRecord: { played: 1, wins: 1, draws: 0, losses: 0, goalsFor: 2, goalsAgainst: 0 },
+    recentForm: ['W'],
+    goalTimeline: [
+      { label: 'دور الـ 32 · الرائد', scored: 2, conceded: 0, result: 'W', opponent: '17 أغسطس: الرائد 0-2 الهلال (خارج الأرض)' },
+    ],
+    scorers: [
+      { playerId: 'martinelli', goals: 1, assists: 0 },
+      { playerId: 'summerville', goals: 1, assists: 1 },
+      { playerId: 'theo', goals: 0, assists: 1 },
+    ],
+  },
+};
+

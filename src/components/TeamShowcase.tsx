@@ -4,12 +4,10 @@ import {
   ChevronRight,
   GitCompareArrows,
   Heart,
-  LayoutGrid,
   Search,
-  Users,
   X,
 } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import {
   AL_HILAL_MANAGEMENT,
   AL_HILAL_SQUAD,
@@ -19,9 +17,10 @@ import {
   type SquadCategory,
 } from '../data/alHilalData';
 import { PlayerCompare } from './PlayerCompare';
+import { SeasonStats } from './SeasonStats';
 import { TacticalPitch } from './TacticalPitch';
 
-export type TeamViewMode = 'carousel' | 'pitch' | 'compare';
+export type TeamViewMode = 'carousel' | 'stats' | 'pitch' | 'compare';
 
 interface TeamShowcaseProps {
   viewMode: TeamViewMode;
@@ -38,6 +37,8 @@ const SALEM_DEFAULT_INDEX = Math.max(
   AL_HILAL_SQUAD.findIndex((p) => p.id === 'salem')
 );
 
+const VIEW_ORDER: TeamViewMode[] = ['carousel', 'stats', 'pitch', 'compare'];
+
 export function TeamShowcase({
   viewMode,
   onChangeViewMode,
@@ -47,6 +48,46 @@ export function TeamShowcase({
   onChangeComparePair,
   onSelectPlayer,
 }: TeamShowcaseProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const prevViewRef = useRef<TeamViewMode>(viewMode);
+  const directionRef = useRef<number>(1);
+  if (prevViewRef.current !== viewMode) {
+    const prevIdx = VIEW_ORDER.indexOf(prevViewRef.current);
+    const nextIdx = VIEW_ORDER.indexOf(viewMode);
+    directionRef.current = nextIdx >= prevIdx ? 1 : -1;
+    prevViewRef.current = viewMode;
+  }
+  const direction = directionRef.current;
+
+  const viewVariants = useMemo(
+    () => ({
+      enter: (dir: number) => ({
+        opacity: 0,
+        x: prefersReducedMotion ? 0 : dir > 0 ? -36 : 36,
+        scale: prefersReducedMotion ? 1 : 0.985,
+      }),
+      center: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+      },
+      exit: (dir: number) => ({
+        opacity: 0,
+        x: prefersReducedMotion ? 0 : dir > 0 ? 36 : -36,
+        scale: prefersReducedMotion ? 1 : 0.985,
+      }),
+    }),
+    [prefersReducedMotion]
+  );
+
+  const viewTransition = useMemo(
+    () =>
+      prefersReducedMotion
+        ? { duration: 0.14 }
+        : { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
+    [prefersReducedMotion]
+  );
+
   const [category, setCategory] = useState<SquadCategory>('players');
   const [position, setPosition] = useState<PositionKey>('all');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
@@ -164,79 +205,101 @@ export function TeamShowcase({
   const slotPlus2 = getSlotByOffset(2);
 
   return (
-    <section className="relative w-full max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 pt-2 pb-24 md:pt-3 md:pb-10 flex flex-col justify-between min-h-[calc(100svh-5rem)]">
+    <section className="relative w-full max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 pt-2 pb-24 md:pt-3 md:pb-10 flex flex-col min-h-[calc(100svh-5rem)]">
+      <AnimatePresence mode="wait" custom={direction} initial={false}>
+        {viewMode === 'stats' && (
+          <motion.div
+            key="stats"
+            custom={direction}
+            variants={viewVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={viewTransition}
+            className="mt-4 flex-1 flex flex-col will-change-transform"
+          >
+            <SeasonStats onSelectPlayer={onSelectPlayer} />
+          </motion.div>
+        )}
+
+        {viewMode === 'pitch' && (
+          <motion.div
+            key="pitch"
+            custom={direction}
+            variants={viewVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={viewTransition}
+            className="mt-5 flex-1 flex flex-col will-change-transform"
+          >
+            <TacticalPitch onSelectPlayer={onSelectPlayer} />
+          </motion.div>
+        )}
+
+        {viewMode === 'compare' && (
+          <motion.div
+            key="compare"
+            custom={direction}
+            variants={viewVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={viewTransition}
+            className="mt-5 flex-1 flex flex-col will-change-transform"
+          >
+            <PlayerCompare
+              leftId={comparePair[0]}
+              rightId={comparePair[1]}
+              onChangeLeft={(id) => onChangeComparePair([id, comparePair[1]])}
+              onChangeRight={(id) => onChangeComparePair([comparePair[0], id])}
+              onSelectPlayer={onSelectPlayer}
+            />
+          </motion.div>
+        )}
+
+        {viewMode === 'carousel' && (
+          <motion.div
+            key="carousel"
+            custom={direction}
+            variants={viewVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={viewTransition}
+            className="flex-1 flex flex-col justify-between will-change-transform"
+          >
       {/* Top Prototype Filter Bar */}
       <div className="space-y-3 z-20">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-          {/* Start side (Right in RTL): اللاعبون / الجهاز الفني + Sub-view Switch */}
+          {/* Start side (Right in RTL): اللاعبون / الجهاز الفني */}
           <div className="flex flex-wrap items-center gap-2">
-            {viewMode === 'carousel' && (
-              <div className="flex items-center gap-2" role="tablist" aria-label="تصنيف الفريق">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={category === 'players'}
-                  onClick={() => handleCategoryChange('players')}
-                  className={`min-h-[38px] px-5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-                    category === 'players'
-                      ? 'bg-white text-[#0E1A5C] shadow-[0_6px_22px_rgba(255,255,255,0.22)]'
-                      : 'bg-white/10 text-white/75 hover:bg-white/16 hover:text-white'
-                  }`}
-                >
-                  اللاعبون
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={category === 'management'}
-                  onClick={() => handleCategoryChange('management')}
-                  className={`min-h-[38px] px-5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-                    category === 'management'
-                      ? 'bg-white text-[#0E1A5C] shadow-[0_6px_22px_rgba(255,255,255,0.22)]'
-                      : 'bg-white/10 text-white/75 hover:bg-white/16 hover:text-white'
-                  }`}
-                >
-                  الجهاز الفني
-                </button>
-              </div>
-            )}
-
-            <div className="flex items-center gap-1 p-1 rounded-full bg-[#091246]/70 border border-white/10">
+            <div className="flex items-center gap-2" role="tablist" aria-label="تصنيف الفريق">
               <button
                 type="button"
-                onClick={() => onChangeViewMode('carousel')}
-                className={`min-h-[32px] px-3 rounded-full text-[11px] font-bold flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap ${
-                  viewMode === 'carousel'
-                    ? 'bg-[#1B4BFF] text-white'
-                    : 'text-white/65 hover:text-white'
+                role="tab"
+                aria-selected={category === 'players'}
+                onClick={() => handleCategoryChange('players')}
+                className={`min-h-[38px] px-5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  category === 'players'
+                    ? 'bg-white text-[#0E1A5C] shadow-[0_6px_22px_rgba(255,255,255,0.22)]'
+                    : 'bg-white/10 text-white/75 hover:bg-white/16 hover:text-white'
                 }`}
               >
-                <Users className="w-3.5 h-3.5" />
-                <span>المعرض</span>
+                اللاعبون
               </button>
               <button
                 type="button"
-                onClick={() => onChangeViewMode('pitch')}
-                className={`min-h-[32px] px-3 rounded-full text-[11px] font-bold flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap ${
-                  viewMode === 'pitch'
-                    ? 'bg-[#1B4BFF] text-white'
-                    : 'text-white/65 hover:text-white'
+                role="tab"
+                aria-selected={category === 'management'}
+                onClick={() => handleCategoryChange('management')}
+                className={`min-h-[38px] px-5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  category === 'management'
+                    ? 'bg-white text-[#0E1A5C] shadow-[0_6px_22px_rgba(255,255,255,0.22)]'
+                    : 'bg-white/10 text-white/75 hover:bg-white/16 hover:text-white'
                 }`}
               >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span>الملعب</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => onChangeViewMode('compare')}
-                className={`min-h-[32px] px-3 rounded-full text-[11px] font-bold flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap ${
-                  viewMode === 'compare'
-                    ? 'bg-[#1B4BFF] text-white'
-                    : 'text-white/65 hover:text-white'
-                }`}
-              >
-                <GitCompareArrows className="w-3.5 h-3.5" />
-                <span>مقارنة</span>
+                الجهاز الفني
               </button>
             </div>
           </div>
@@ -303,7 +366,7 @@ export function TeamShowcase({
 
         {/* Collapsible Instant Search Input */}
         <AnimatePresence>
-          {viewMode === 'carousel' && searchOpen && (
+          {searchOpen && (
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -327,30 +390,9 @@ export function TeamShowcase({
         </AnimatePresence>
       </div>
 
-      {/* Mode 2: Interactive Tactical Pitch */}
-      {viewMode === 'pitch' && (
-        <div className="mt-5 flex-1">
-          <TacticalPitch onSelectPlayer={onSelectPlayer} />
-        </div>
-      )}
-
-      {/* Mode 3: Head-to-Head Player Comparator */}
-      {viewMode === 'compare' && (
-        <div className="mt-5 flex-1">
-          <PlayerCompare
-            leftId={comparePair[0]}
-            rightId={comparePair[1]}
-            onChangeLeft={(id) => onChangeComparePair([id, comparePair[1]])}
-            onChangeRight={(id) => onChangeComparePair([comparePair[0], id])}
-            onSelectPlayer={onSelectPlayer}
-          />
-        </div>
-      )}
-
       {/* Mode 1: Signature 5-Card Perspective Shield Carousel with REAL Al Hilal Cutouts */}
-      {viewMode === 'carousel' && (
-        <div
-          className="relative flex-1 flex flex-col items-center justify-center my-2 select-none"
+      <div
+        className="relative flex-1 flex flex-col items-center justify-center my-2 select-none"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -648,7 +690,9 @@ export function TeamShowcase({
             </>
           )}
         </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,27 +1,15 @@
 import { useEffect, useState } from 'react';
-import { AuthModal, CartModal, type CartEntry } from './components/AuthAndCartModals';
-import {
-  HomeOverview,
-  MatchesView,
-  ShopView,
-  StandingsView,
-  TicketsView,
-  type BookedTicket,
-} from './components/ClubViews';
-import { Navbar, type NavSection } from './components/Navbar';
+import { AuthModal } from './components/AuthAndCartModals';
+import { Navbar } from './components/Navbar';
 import { PlayerDetailModal } from './components/PlayerDetailModal';
 import { TeamShowcase, type TeamViewMode } from './components/TeamShowcase';
-import { AL_HILAL_SQUAD, type PlayerProfile, type StoreItem } from './data/alHilalData';
+import { AL_HILAL_SQUAD, type PlayerProfile } from './data/alHilalData';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState<NavSection>('team');
   const [teamViewMode, setTeamViewMode] = useState<TeamViewMode>('carousel');
   const [selectedPlayer, setSelectedPlayer] = useState<PlayerProfile | null>(null);
   const [authOpen, setAuthOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
   const [memberName, setMemberName] = useState<string | null>(null);
-  const [cart, setCart] = useState<CartEntry[]>([]);
-  const [bookedTickets, setBookedTickets] = useState<BookedTicket[]>([]);
   const [comparePair, setComparePair] = useState<[string, string]>(['salem', 'watkins']);
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
@@ -50,28 +38,8 @@ export default function App() {
     const other =
       AL_HILAL_SQUAD.find((p) => p.id !== playerId)?.id ?? 'watkins';
     setComparePair([playerId, other]);
-    setActiveSection('team');
     setTeamViewMode('compare');
   };
-
-  const handleAddToCart = (item: StoreItem, size: string) => {
-    const key = `${item.id}-${size}`;
-    setCart((prev) => {
-      const existing = prev.find((entry) => entry.key === key);
-      if (existing) {
-        return prev.map((entry) =>
-          entry.key === key ? { ...entry, qty: entry.qty + 1 } : entry
-        );
-      }
-      return [...prev, { key, item, size, qty: 1 }];
-    });
-  };
-
-  const handleRemoveFromCart = (key: string) => {
-    setCart((prev) => prev.filter((entry) => entry.key !== key));
-  };
-
-  const cartCount = cart.reduce((sum, entry) => sum + entry.qty, 0);
 
   return (
     <div
@@ -95,46 +63,25 @@ export default function App() {
 
       <div className="relative z-10 flex flex-col flex-1">
         <Navbar
-          activeSection={activeSection}
-          onSelectSection={(section) => {
-            setActiveSection(section);
+          activeView={teamViewMode}
+          onSelectView={(view) => {
+            setTeamViewMode(view);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           onOpenAuth={() => setAuthOpen(true)}
-          onOpenCart={() => setCartOpen(true)}
-          cartCount={cartCount}
           memberName={memberName}
         />
 
         <main className="flex-1">
-          {activeSection === 'team' && (
-            <TeamShowcase
-              viewMode={teamViewMode}
-              onChangeViewMode={setTeamViewMode}
-              favorites={favorites}
-              onToggleFavorite={handleToggleFavorite}
-              comparePair={comparePair}
-              onChangeComparePair={setComparePair}
-              onSelectPlayer={setSelectedPlayer}
-            />
-          )}
-          {activeSection === 'home' && (
-            <HomeOverview
-              onNavigate={setActiveSection}
-              onSelectPlayer={setSelectedPlayer}
-            />
-          )}
-          {activeSection === 'matches' && (
-            <MatchesView onBookTickets={() => setActiveSection('tickets')} />
-          )}
-          {activeSection === 'standings' && <StandingsView />}
-          {activeSection === 'tickets' && (
-            <TicketsView
-              bookedTickets={bookedTickets}
-              onBookTicket={(t) => setBookedTickets((prev) => [t, ...prev])}
-            />
-          )}
-          {activeSection === 'shop' && <ShopView onAddToCart={handleAddToCart} />}
+          <TeamShowcase
+            viewMode={teamViewMode}
+            onChangeViewMode={setTeamViewMode}
+            favorites={favorites}
+            onToggleFavorite={handleToggleFavorite}
+            comparePair={comparePair}
+            onChangeComparePair={setComparePair}
+            onSelectPlayer={setSelectedPlayer}
+          />
         </main>
       </div>
 
@@ -147,21 +94,13 @@ export default function App() {
         onClose={() => setSelectedPlayer(null)}
       />
 
-      {/* Auth & Cart Modals */}
+      {/* Auth Modal */}
       <AuthModal
         open={authOpen}
         memberName={memberName}
         onClose={() => setAuthOpen(false)}
         onSignIn={setMemberName}
         onSignOut={() => setMemberName(null)}
-      />
-
-      <CartModal
-        open={cartOpen}
-        items={cart}
-        onClose={() => setCartOpen(false)}
-        onRemove={handleRemoveFromCart}
-        onClear={() => setCart([])}
       />
     </div>
   );
